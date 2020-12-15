@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#">Login</a>
+        <a href="index.html">Signup</a>
+        <a href="logout.html">Logout</a>
+
+    </div>
+    <h1>Login Form <img src="./img/hand.png" width="80px" height="60px" alt="join"> </h1>
+    </h1>
+
+    <br>
+    <br>
+    <div class="login">
+        <form onsubmit="return signINForm()" action="#">
+            <div class="container">
+                E-mail:
+                <input type="text" placeholder="email@gmail.com" id="Semail" required="required">
+                <br>
+                <br>
+                Password :
+                <input type="password" placeholder="*********" id="Spassword" required="required">
+                <br>
+                <br>
+                <button>Login</button>
+
+            </div>
+
+    </div>
+    </form>
+</body>
+
+<script>
+
+
+
+    let isfound = false;
+
+    function signINForm() {
+        let users = JSON.parse(localStorage.getItem("users"));
+
+        var uemail = document.getElementById('Semail').value;
+        var upassword = document.getElementById('Spassword').value;
+
+
+
+        for (i = 0; i < users.length; i++) {
+            if (users[i].email === uemail) {
+                isfound = i;
+                break;
+            }
+
+        }
+      
+        if (isfound === false) {
+
+            alert("Email not found");
+            
+
+        }
+        else if (users[isfound].password === upassword) {
+            alert("Login succesfully")
+            localStorage.setItem("currentuser", JSON.stringify(users[isfound]));
+            window.open("logout.html");
+          
+        }
+        else {
+            alert("password incorrect")
+        }
+        return false;
+    }
+
+
+
+</script>
+
+</html>

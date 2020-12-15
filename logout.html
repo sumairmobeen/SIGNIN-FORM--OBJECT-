@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="logout.css">
+<body>
+    
+   
+
+    <div class="navbar">
+        
+        <a href="index.html">Signup</a>
+    </div>
+    <h1>DETAIL OF USER </h1>
+
+    <p id="one"></p>
+    <p id="two"></p>
+    <p id="three"></p>
+    <p id="four"></p> 
+    <p id="five"></p> 
+
+
+
+</body>
+<script>
+   
+    var currentuser = JSON.parse(localStorage.getItem("currentuser"))
+   
+    console.log(currentuser)
+    document.getElementById("one").innerHTML = currentuser.name;
+    document.getElementById("two").innerHTML = currentuser.cnic;
+    document.getElementById("three").innerHTML =currentuser.gender;
+   
+
+    
+</script>
+</html>

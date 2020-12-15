@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SININ FORM</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <div class="navbar">
+        <a href="#">Signup</a>
+        <a href="login.html">Login</a>
+    </div>
+
+    <h2> <img src="./img/sni1.png" width="300px" height="100px" alt="sno"></h2>
+
+
+    <div class="form">
+        <form onsubmit="return signup()">
+
+            Name:
+            <input type="text" id="name" maxlength="15" placeholder="First Name" required="required">
+
+
+            <br>
+            <br>
+            Gender:
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp; &nbsp; &nbsp;
+            Age :
+            <input type="date" required="required">
+            <br>
+            <br>
+            E-mail:
+            <input type="text" id="email" maxlength="30" placeholder="email@gmail.com" required="required">
+
+            <br>
+            <br>
+            Password :
+            <input type="password" id="password" required="required">
+            CNIC Number:
+            <input type="number" id="cnic" placeholder="xxxxx-xxxxxxx-x">
+            <br>
+            <br>
+            <p>Nationality</p>
+            <select id="nationality">
+                <option value="pak">Pakistani</option>
+                <option value="ksa">Suadi arabian</option>
+                <option value="uk">British</option>
+            </select>
+            <button>submit</button>
+
+
+
+            <!-- <input type="reset" id="cancle" value="Cancel" /> -->
+
+        </form>
+    </div>
+
+    <script>
+
+        var users = [
+            { name: "mobeen", email: "mobeengrs@gamil.com", age: 38, gender: "male", cnic: "11231-1212451-1", nationality: "pakistani" },
+            { name: "sumair", email: "sumair@gamil.com",password:1010, age: 19, genedr: "male", cnic: "12210-1144454-1", nationality: "saudia arabian" },
+            { name: "sahil", email: "sahil@gamil.com",password:1212, age: 18, gender: "male", cnic: "12411-12124551-5", nationality: "pakistani" }
+
+        ]
+
+
+        function signup() {
+          
+            
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var cnic = document.getElementById("cnic").value;
+            var gender = document.getElementById("gender").value;
+            var nationality = document.getElementById("nationality").value;
+            var password = document.getElementById("password").value;
+
+            users.push({
+                name: name,
+                email: email,
+                password: password,
+                cnic: cnic,
+                gender: gender,
+                nationality: nationality
+            });
+
+            localStorage.setItem("users", JSON.stringify(users))
+
+            alert("signed Up succesfully")
+
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+
+            window.location.href = "login.html"
+
+         
+            return false;
+        }
+
+    </script>
+
+</body>
+
+</html>
